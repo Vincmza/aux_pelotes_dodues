@@ -12,14 +12,14 @@ import { BrowserRouter, Routes, Route} from "react-router-dom";
 function App() {
   return (
     <div className="App">
-      <HeaderProject/>
-      <HeaderMenus/>
       <BrowserRouter>
+        <HeaderProject/>
+        <HeaderMenus/>
         <Routes>
-        <Route path="/news" element={<News/>}/>
-        <Route path="/products" element={<Products/>}/>
-        <Route path="/contact" element={<Contact/>}/>
-        <Route path="/team" element={<Team/>}/> 
+          <Route path="/news" element={<News/>}/>
+          <Route path="/products" element={<Products/>}/>
+          <Route path="/contact" element={<Contact/>}/>
+          <Route path="/team" element={<Team/>}/> 
         </Routes>
       </BrowserRouter>
     </div>

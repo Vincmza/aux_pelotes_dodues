@@ -1,11 +1,22 @@
 import React, {useState} from 'react';
-import { useNavigate, useLocation } from "react-router-dom";
-//COMPONENTS
-import Dot from './Dot';
+import { useNavigate, useLocation} from "react-router-dom";
+
 
 const HeaderMenus = ()=>{
-
-    const all_menus = ["Actualités", "Nos Produits", "Contact", "Qui sommes-nous ?"]
+    const all_menus = [
+        {menu:"Actualités", route:"news"}, 
+        {menu:"Nos Produits", route:"products"}, 
+        {menu:"Contact", route:"contact"}, 
+        {menu:"Qui sommes-nous ?", route:"team"}
+    ]
+    const [is_icon_clicked, set_is_icon_clicked] = useState("")
+    //const location = useLocation()
+    let navigate = useNavigate()
+    //console.log(location.pathname)
+    const redirection = (elem)=>{
+        set_is_icon_clicked(elem.menu)
+        navigate(elem.route)
+    }
 
     return (
         <div class="header_menus">
@@ -16,8 +27,16 @@ const HeaderMenus = ()=>{
                         className='nav__menu'
                         key={elem}
                         >
-                            <div className='nav__menu__title'>{elem}</div>
-                            <div className='nav__menu__dot'></div> 
+                            <div 
+                            className='nav__menu__title'
+                            onClick={()=>redirection(elem)}
+                            >
+                                {elem.menu}
+                            </div>
+
+                            {elem.menu === is_icon_clicked &&
+                                (<div className='nav__menu__dot'></div>)
+                            }
                         </li>
                     ))}
                 </ul>

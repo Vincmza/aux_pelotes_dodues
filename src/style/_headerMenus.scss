@@ -1,4 +1,4 @@
-@import "./colors";
+@import "./animations";
 
 .header_menus{
     background-color: $bg_header_menus;
@@ -21,25 +21,34 @@
     align-items: center;
     &__menu{
         width: 20%;
+        height: 100%;
         display: flex;
         flex-direction: column;
+        justify-content: space-between;
         align-items: center;
         //border:1px solid green;
         &__title{
             font-family: "headerTitles";
-            font-size: 35px;
+            font-size: 40px;
             color:black;
             //border:1px solid blue;
-            text-align: center;
-            padding-bottom: 15px;
+            display: flex;
+            margin-top: 25px;
+            cursor: pointer;
+            text-shadow: $border 5px 0 5px;
+        }
+        &__title:active{
+            text-shadow: $bg_main_page 1px 0 10px;
         }
         &__dot{
             background-color:$dot;
             width: 25px;
             height: 25px;
             border-radius: 50%;
+            margin-bottom: 20px;
             //border:1px solid red;
             text-align: center;
+            animation: apparition 200ms cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
         }
     }
 }
