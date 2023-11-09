@@ -10,7 +10,8 @@ const HeaderMenus = ()=>{
         {menu:"Qui sommes-nous ?", route:"team"}
     ]
     const [is_icon_clicked, set_is_icon_clicked] = useState("")
-    //const location = useLocation()
+    const location = useLocation()
+    const current_menu = location.pathname
     let navigate = useNavigate()
     //console.log(location.pathname)
     const redirection = (elem)=>{
@@ -34,9 +35,12 @@ const HeaderMenus = ()=>{
                                 {elem.menu}
                             </div>
 
-                            {elem.menu === is_icon_clicked &&
+                            {elem.menu === is_icon_clicked || "/" + elem.route === current_menu ?
                                 (<div className='nav__menu__dot'></div>)
+                                :
+                                (<></>)
                             }
+                        
                         </li>
                     ))}
                 </ul>

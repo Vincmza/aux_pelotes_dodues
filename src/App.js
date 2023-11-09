@@ -6,6 +6,7 @@ import News from "./pages/News";
 import Products from "./pages/Products";
 import Contact from "./pages/Contact";
 import Team from "./pages/Team";
+import Footer from "./components/Footer";
 // ROUTER
 import { BrowserRouter, Routes, Route} from "react-router-dom";
 
@@ -21,6 +22,7 @@ function App() {
           <Route path="/contact" element={<Contact/>}/>
           <Route path="/team" element={<Team/>}/> 
         </Routes>
+        <Footer/>
       </BrowserRouter>
     </div>
   );

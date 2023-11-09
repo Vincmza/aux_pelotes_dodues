@@ -40,6 +40,10 @@
         &__title:active{
             text-shadow: $bg_main_page 1px 0 10px;
         }
+        &__title:hover{
+            transform:scale(0.9);
+            transition:200ms;
+        }
         &__dot{
             background-color:$dot;
             width: 25px;
