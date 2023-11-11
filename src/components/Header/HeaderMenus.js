@@ -20,7 +20,7 @@ const HeaderMenus = ()=>{
     }
 
     return (
-        <div class="header_menus">
+        <div className="header_menus">
             <div className='header_menus__container'>
                 <ul className='nav'>
                     {all_menus.map(elem=>(

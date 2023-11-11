@@ -7,7 +7,7 @@
     &__container{
         width:75%;
         height:100%;
-        border:1px solid red;
+        //border:1px solid red;
         display: flex;
         justify-content: center;
     }
@@ -18,12 +18,26 @@
     align-items: center;
     width:80%;
     height:100%;
-    border: 1px solid rgb(163, 163, 22);
+    //border: 1px solid rgb(163, 163, 22);
     &__submitButton{
         font-family: "contact_form";
-        padding: 10px;
+        padding: 10px 15px;
         font-size: 20px;
         margin-top: 40px;
+        border: 1px solid $border;
+        border-radius: 15px;
+        background-color: $bg_header_menus;
+        color: black;
+        cursor: pointer;
+    }
+    &__submitButton:hover{
+        transform: scale(1.1);
+        transition:200ms;
+        box-shadow: 5px 3px 5px $border;
+    }
+    &__submitButton:active{
+        background-color: $ball;
+        color: $bg_main_page;
     }
 }
 label{

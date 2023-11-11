@@ -3,7 +3,9 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 const Contact = ()=>{
 
-    const font_color = "rgb(151,143,255)"
+    const purple_font = "rgb(151,143,255)"
+    const scale_bigger = "scale(1.1)"
+    const transition = "200ms"
 
     const [input_focused, set_input_focused]=useState("")
 
@@ -18,6 +20,16 @@ const Contact = ()=>{
     const handle_submit = (e)=>{
         console.log("FORMULAIRE ==> ", e)
     }
+    const return_style = (name)=>{
+        const data = {
+            "color": purple_font,
+            "transform": scale_bigger,
+            "transition": transition
+        }
+        if(input_focused === name){
+            return data
+        }
+    }
 
     return (
         <div className='contact'>
@@ -26,7 +38,9 @@ const Contact = ()=>{
 
                 <form onSubmit={handle_submit} className='form'>
                     
-                    <label htmlFor='username' style={{color: input_focused === "username" && font_color}}>
+                    <label 
+                    htmlFor='username' 
+                    style={return_style("username")}>
                         Votre nom
                     </label>
 
@@ -38,7 +52,7 @@ const Contact = ()=>{
                     onFocus={(event)=>handle_label_color(event)}
                     />
 
-                    <label htmlFor='email' style={{color: input_focused === "email" && font_color}}>
+                    <label htmlFor='email' style={return_style("email")}>
                         Votre email
                     </label>
 
@@ -49,7 +63,7 @@ const Contact = ()=>{
                     onFocus={(event)=>handle_label_color(event)} 
                     required/>
 
-                    <label htmlFor='message' style={{color: input_focused === "message" && font_color}}>
+                    <label htmlFor='message' style={return_style("message")}>
                         Votre message
                     </label>
                     <textarea 
