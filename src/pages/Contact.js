@@ -18,7 +18,16 @@ const Contact = ()=>{
     //console.log("APRES LA MAJ DU STATE ==> ", input_focused)
 
     const handle_submit = (e)=>{
-        console.log("FORMULAIRE ==> ", e)
+        e.preventDefault();
+        const form = e.target
+        const formData = new FormData(form)
+
+        const username = formData.get("username")
+        const email = formData.get("email")
+        const message = formData.get("message")
+
+        console.log(`Username = ${username}, email = ${email}, Message = ${message}`)
+
     }
     const return_style = (name)=>{
         const data = {
