@@ -19,9 +19,6 @@
     width:80%;
     height:100%;
     border: 1px solid rgb(163, 163, 22);
-    &__labelEmail, &__labelMessage{
-        
-    }
     &__submitButton{
         font-family: "contact_form";
         padding: 10px;
@@ -35,6 +32,7 @@ label{
     font-size: 25px;
     margin-top: 40px;
 }
+//INPUT
 input{
     //border:1px solid green;
     width:70%;
@@ -46,6 +44,10 @@ input{
     padding: 10px; 
     background-color: $bg_main_page;
 }
+input:focus{
+    border-color: $ball;
+}
+//TEXTAREA 
 textarea{
     resize: none;
     width:70%;
@@ -58,4 +60,8 @@ textarea{
 }
 textarea:invalid {
     border: 2px dashed red;
-  }
+}
+textarea:focus{
+    outline: none;
+    border: 2px solid $ball;
+}
