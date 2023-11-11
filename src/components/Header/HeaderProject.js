@@ -6,6 +6,7 @@ import * as icons from "../../resources/icons"
 const HeaderProject = ()=>{
     const project_name = "AUX PELOTES DODUES"
     const sentence = "Créations d'articles en laine, tissu et bois"
+    const fb_page = "https://www.facebook.com/profile.php?id=100087777111729"
     return (
         <div className="header_project">
             <div className='header_project__container1'>
@@ -16,7 +17,17 @@ const HeaderProject = ()=>{
 
             <div className="header_project__container2">
                 <h2 className='header_project__container2__sentence'>{sentence}</h2>
-                <h3 className='header_project__container2__logoFB'>{icons.facebook}</h3>
+                <h3>
+                    <a
+                    className='header_project__container2__logoFB' 
+                    href={fb_page}
+                    target="_blank"
+                    rel="noreferrer"
+                    >
+                        {icons.facebook}
+                    </a>
+
+                </h3>
             </div>
             
         </div>
