@@ -39,6 +39,15 @@
         background-color: $ball;
         color: $bg_main_page;
     }
+    &__counter{
+        //border: 1px solid red;
+        display: flex;
+        justify-content: flex-end;
+        width:70%;
+        padding: 10px;
+        font-family: "contact_form";
+        font-weight: bold;
+    }
 }
 label{
     //border:1px solid blue;

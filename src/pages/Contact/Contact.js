@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import { useNavigate, useLocation } from "react-router-dom";
+//COMPONENTS
+import TextArea from './TextArea';
 
 const Contact = ()=>{
 
@@ -17,23 +19,29 @@ const Contact = ()=>{
     }
     //console.log("APRES LA MAJ DU STATE ==> ", input_focused)
 
-    const handle_submit = (e)=>{
+    const get_data = (e)=>{
         e.preventDefault();
         const form = e.target
         const formData = new FormData(form)
+        const data = {
+            username : formData.get("username"),
+            email : formData.get("email"),
+            message : formData.get("message")
+        }
+        return data
+    }
 
-        const username = formData.get("username")
-        const email = formData.get("email")
-        const message = formData.get("message")
-
-        console.log(`Username = ${username}, email = ${email}, Message = ${message}`)
+    const handle_submit = (e)=>{
+        const data = get_data()
+        console.log(`Username = ${data.username}, email = ${data.email}, Message = ${data.message}`)
 
     }
     const return_style = (name)=>{
         const data = {
             "color": purple_font,
             "transform": scale_bigger,
-            "transition": transition
+            "transition": transition,
+            "font-weight" : "bold"
         }
         if(input_focused === name){
             return data
@@ -75,7 +83,17 @@ const Contact = ()=>{
                     <label htmlFor='message' style={return_style("message")}>
                         Votre message
                     </label>
-                    <textarea 
+                    <TextArea
+                    name="message"
+                    type="text"
+                    id="message"
+                    handle_label_color={handle_label_color}
+                    autoCapitalize='sentences'
+                    spellCheck="true"
+                    maxLength="300"
+                    className="form__counter"
+                    />
+                    {/* <textarea 
                     name="message" 
                     type="text" 
                     id="message"
@@ -83,8 +101,7 @@ const Contact = ()=>{
                     autoCapitalize='sentences'
                     spellCheck="true"
                     maxLength="300"
-
-                    />
+                    /> */}
                     <button className='form__submitButton' type="submit">Soumettre</button>
                 </form>
 
