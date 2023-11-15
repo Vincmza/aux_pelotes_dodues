@@ -3,7 +3,7 @@ import * as React from "react";
 import HeaderMenus from "./components/Header/HeaderMenus";
 import HeaderProject from "./components/Header/HeaderProject";
 import News from "./pages/News";
-import Products from "./pages/Products";
+import Products from "./pages/Products/Products";
 import Contact from "./pages/Contact/Contact";
 import Team from "./pages/Team";
 import Footer from "./components/Footer";
