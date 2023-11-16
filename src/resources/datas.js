@@ -43,3 +43,15 @@ export const send_all_product_types = ()=>{
     return array
 }
 
+export const send_all_items = ()=>{
+    const array = []
+    for(const product in datas){
+        datas[product].forEach(item => {
+            array.push(item)
+        });
+    }
+    return array
+}
+
+
+
