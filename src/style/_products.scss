@@ -8,22 +8,33 @@
     &__filter{
         width:80%;
         height:5%;
-        border:1px solid red;
+        border:1px solid $border;
         display: flex;
         justify-content: space-around;
+        font-family: "menu_and_contact";
+        padding: 25px 0px;
+        margin-top: 25px;
         &__button{
             width:10%;
             height:100%;
-            background-color: rgb(100, 206, 100);
+            //background-color: rgb(100, 206, 100);
+            border:1px solid $border;
+            border-radius: 5px;
             display: flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
+        }
+        &__button:hover{
+            transform: scale(1.1);
+            transition:200ms;
+            box-shadow: 5px 3px 3px $border;
         }
     }
     &__container{
         width: 80%;
         height: 100%;
         border:1px solid blue;
+        margin-top: 25px;
     }
 }

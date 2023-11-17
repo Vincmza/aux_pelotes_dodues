@@ -20,12 +20,12 @@
     height:100%;
     //border: 1px solid rgb(163, 163, 22);
     &__submitButton{
-        font-family: "contact_form";
+        font-family: "menu_and_contact";
         padding: 10px 15px;
         font-size: 20px;
-        margin-top: 40px;
+        margin-top: 20px;
         border: 1px solid $border;
-        border-radius: 15px;
+        border-radius: 5px;
         background-color: $bg_header_menus;
         color: black;
         cursor: pointer;
@@ -33,7 +33,7 @@
     &__submitButton:hover{
         transform: scale(1.1);
         transition:200ms;
-        box-shadow: 5px 3px 5px $border;
+        box-shadow: 5px 3px 3px $border;
     }
     &__submitButton:active{
         background-color: $ball;
@@ -45,13 +45,13 @@
         justify-content: flex-end;
         width:70%;
         padding: 10px;
-        font-family: "contact_form";
+        font-family: "menu_and_contact";
         font-weight: bold;
     }
 }
 label{
     //border:1px solid blue;
-    font-family: "contact_form";
+    font-family: "menu_and_contact";
     font-size: 25px;
     margin-top: 40px;
 }
@@ -60,7 +60,7 @@ input{
     //border:1px solid green;
     width:70%;
     font-size: 25px;
-    font-family: "contact_form";
+    font-family: "menu_and_contact";
     outline: none;
     border:none;
     border-bottom: 2px solid $border; 
@@ -77,7 +77,7 @@ textarea{
     height:30%;
     padding: 10px;
     font-size: 20px;
-    font-family: "contact_form";
+    font-family: "menu_and_contact";
     background-color: $bg_main_page;
     margin-top: 25px;
 }

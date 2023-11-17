@@ -48,21 +48,38 @@ const Products = ()=>{
                 </div>
             ))
         }
-        
-
+    }
+    const return_style = (item)=>{
+        const purple = "rgb(151,143,255)"
+        const main_color = "rgb(252,241,232)"
+        const data = {
+            "background-color": purple,
+            "color":main_color
+        }
+        if(item === selected_type){
+            return data
+        }
     }
 
     return (
     <div className='products'>
         <div className='products__filter'>
 
-            <span id='all' className='products__filter__button' onClick={(event)=>update_selected_type(event)}>Nos produits</span>
+            <span 
+            id='all' 
+            className='products__filter__button' 
+            onClick={(event)=>update_selected_type(event)}
+            style={return_style("all")}
+            >
+                Nos produits
+            </span>
             {all_product_types.map(item=>(
                 <span 
                 className='products__filter__button'
                 key={item}
                 id={item}
                 onClick={(event)=>update_selected_type(event)}
+                style={return_style(item)}
                 >
                     {send_back_in_capital_letter(item)}
                 </span>

@@ -29,7 +29,7 @@
         //border:1px solid green;
         &__title{
             font-family: "headerTitles";
-            font-size: 40px;
+            font-size: 35px;
             color:black;
             //border:1px solid blue;
             display: flex;
@@ -41,7 +41,7 @@
             text-shadow: $bg_main_page 1px 0 10px;
         }
         &__title:hover{
-            transform:scale(0.9);
+            transform:scale(1.1);
             transition:200ms;
         }
         &__dot{
