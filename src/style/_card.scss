@@ -1,0 +1,22 @@
+.card{
+    border:1px solid red;
+    width: 20%;
+    height:30%;
+    padding:10px;
+    display: flex;
+    &__container{
+        display: flex;
+        flex-direction: column;
+        border:1px solid green;
+        &__image{
+            border:1px solid purple; 
+            display: flex;
+            justify-content: center;
+        }
+        &__image img{
+            width:30%;
+        }
+
+    }
+    
+}

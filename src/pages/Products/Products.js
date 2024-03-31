@@ -2,11 +2,13 @@ import React, {useState} from 'react';
 import { useNavigate, useLocation} from "react-router-dom";
 //DATAS
 import { send_all_product_types, send_all_items } from '../../resources/datas';
+//COMPONENT
+import Card from './Card';
 
 const Products = ()=>{
     //TOUS LES PRODUITS
     const datas = send_all_items()
-    //console.log(datas)
+    console.log(datas)
 
     //ON RECUPERE LES TYPES DES PRODUITS EXISTANTS POUR LES AFFICHER DANS UN FILTRE
     const all_product_types = send_all_product_types()
@@ -26,29 +28,6 @@ const Products = ()=>{
         return new_item
     }
 
-    // FONCTION QUI TRIE LE CONTENU A AFFICHER
-    //SELON LA VALEUR DU STATE RELATIF AU MENU DE SELECTION
-    const display_content=(selected_type)=>{
-        if(selected_type !== "all"){
-            const content_filtered = datas.filter(item => item.type === selected_type)
-            return content_filtered.map(elem=>(
-                <div key={elem.id}>
-                    <div>{elem.id}</div>
-                    <div>{elem.type}</div>
-                    <div>{elem.color}</div>
-                </div>
-            ))
-        }
-        else{
-            return datas.map(elem=>(
-                <div key={elem.id}>
-                    <div>{elem.id}</div>
-                    <div>{elem.type}</div>
-                    <div>{elem.color}</div>
-                </div>
-            ))
-        }
-    }
     const return_style = (item)=>{
         const purple = "rgb(151,143,255)"
         const main_color = "rgb(252,241,232)"
@@ -86,7 +65,29 @@ const Products = ()=>{
             ))}
         </div>
         <div className='products__container'>
-            {display_content(selected_type)}
+            {selected_type !== "all" &&
+                datas.filter(item => item.type === selected_type).map(elem=>
+                    <Card 
+                    key={elem.id}
+                    url={elem.image}
+                    matter={elem.matter}
+                    price={elem.price}
+                    >
+                    </Card>
+                )
+            }
+            {selected_type == "all" &&
+                datas.map(elem=>
+                    <Card 
+                    key={elem.id}
+                    url={elem.image}
+                    matter={elem.matter}
+                    price={elem.price}
+                    >
+                    </Card>
+                )
+            }
+
         </div>
     </div>
         
