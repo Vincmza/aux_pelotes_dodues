@@ -7,7 +7,7 @@ const HeaderMenus = ()=>{
         {menu:"Actualités", route:"news"}, 
         {menu:"Nos Produits", route:"products"}, 
         {menu:"Contact", route:"contact_us"}, 
-        {menu:"Qui sommes-nous ?", route:"team"}
+        {menu:"Qui suis-je ?", route:"team"}
     ]
     const [is_icon_clicked, set_is_icon_clicked] = useState("")
     const location = useLocation()

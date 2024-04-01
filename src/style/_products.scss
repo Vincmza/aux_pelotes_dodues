@@ -23,6 +23,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            padding:10px;
             cursor: pointer;
         }
         &__button:hover{
@@ -38,7 +39,6 @@
         margin-top: 25px;
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;
         align-items: center;
     }
 }

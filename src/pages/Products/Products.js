@@ -72,6 +72,7 @@ const Products = ()=>{
                     url={elem.image}
                     matter={elem.matter}
                     price={elem.price}
+                    isAvailable={elem.isAvailable}
                     >
                     </Card>
                 )
@@ -83,6 +84,7 @@ const Products = ()=>{
                     url={elem.image}
                     matter={elem.matter}
                     price={elem.price}
+                    isAvailable={elem.isAvailable}
                     >
                     </Card>
                 )
