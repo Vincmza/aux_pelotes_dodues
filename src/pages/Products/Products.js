@@ -1,17 +1,28 @@
 import React, {useState} from 'react';
 import { useNavigate, useLocation} from "react-router-dom";
 //DATAS
-import { send_all_product_types, send_all_items } from '../../resources/datas';
+import { send_all_product_types_and_common_informations, send_all_items } from '../../resources/datas';
 //COMPONENT
 import Card from './Card';
+import CommonInformations from './CommonInformations';
 
 const Products = ()=>{
     //TOUS LES PRODUITS
     const datas = send_all_items()
-    console.log(datas)
+    //console.log(datas)
 
-    //ON RECUPERE LES TYPES DES PRODUITS EXISTANTS POUR LES AFFICHER DANS UN FILTRE
-    const all_product_types = send_all_product_types()
+    //ON RECUPERE LES TYPES DES PRODUITS EXISTANTS ET LES INFOS GENERALES DES PRODUITS
+    const all_product_types_and_informations = send_all_product_types_and_common_informations()
+    //console.log("LES DONNEES : ", all_product_types_and_informations)
+
+    //ON ISOLE JUSTE LES TYPES DES PRODUITS
+    const return_types_only = ()=>{
+        const array = []
+        all_product_types_and_informations.forEach(element=>{
+            array.push(element.type)
+        })
+        return array
+    }
 
     //STATE POUR CAPTURER LE TYPE DE PRODUIT SELECTIONNE PAR L'UTILISATEUR
     const[selected_type, set_selected_type]=useState("all")
@@ -52,7 +63,7 @@ const Products = ()=>{
             >
                 Nos produits
             </span>
-            {all_product_types.map(item=>(
+            {return_types_only().map(item=>(
                 <span 
                 className='products__filter__button'
                 key={item}
@@ -64,14 +75,16 @@ const Products = ()=>{
                 </span>
             ))}
         </div>
+        <CommonInformations
+        all_product_types_and_informations={all_product_types_and_informations}
+        selected_type={selected_type}
+        />
         <div className='products__container'>
             {selected_type !== "all" &&
                 datas.filter(item => item.type === selected_type).map(elem=>
                     <Card 
                     key={elem.id}
                     url={elem.image}
-                    matter={elem.matter}
-                    price={elem.price}
                     isAvailable={elem.isAvailable}
                     >
                     </Card>
@@ -82,8 +95,6 @@ const Products = ()=>{
                     <Card 
                     key={elem.id}
                     url={elem.image}
-                    matter={elem.matter}
-                    price={elem.price}
                     isAvailable={elem.isAvailable}
                     >
                     </Card>

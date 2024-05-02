@@ -1,11 +1,32 @@
 import { v4 as uuidv4 } from 'uuid';
 
+const common_informations = [
+    {type : "bonnets", price : 1500, description : "Nos bonnets sont fabriqués avec de la laine de moutons qu'on élève nous mêmes bande de bâtards !"},
+    {type : "peluches", price : 900, description : "On les tricotte avec nos mimines alors achète espèce de salope, ça t'évitera d'aller chez king Jouet !"},
+    {type : "châles", price : 2000, description : "On emploie des esclaves c'est plus facile, ça coûte rien. En tout cas ils sont faits mains !"},
+    {type : "capes", price : 2500, description : "Admirez nos somptueuses capes en peaux humaines, entièrements fabriquées avec de la peau de cons. T'imagines que la matière première ne manque pas !"},
+    {type : "echarpes", price : 1000, description : "On y met nos tripes pour les tricotter et surtout de la laine !"}
+]
+
+const return_common_informations = (product_type)=>{
+    let data = new Object
+    common_informations.forEach(product=>{
+        if(product.type == product_type){
+            console.log("Product found. OK. Code status 202.", product)
+            data = product
+        }
+        else{
+            console.log("Error. Product not found. Codes status 404.")
+            return false
+        }
+    })
+    return data
+}
+
 const data_model = (
-    id=String, type=String, 
+    id=String, 
+    type=String, 
     color=String, 
-    matter=String, 
-    price=Number, 
-    shipping=Number, 
     isavailable=Boolean, 
     url=String)=>{
 
@@ -13,9 +34,6 @@ const data_model = (
         id:id,
         type: type,
         color: color,
-        matter: matter,
-        price: price,
-        shipping: shipping,
         isAvailable: isavailable, 
         image : url
     }
@@ -27,48 +45,50 @@ export const datas = {
     // ID, TYPE, COULEUR, MATIERES UTILISEES, TAILLE, PRIX, FRAIS DE PORT, DISPONIBLE, URL PHOTO
     bonnets: 
     [
-        data_model(uuidv4(),"bonnets", "rose","laine",850,300,false,"./assests/pictures/bonnets/bonnet.jpg"),
-        data_model(uuidv4(),"bonnets", "bleu","laine",850,300,true,"./assests/pictures/bonnets/bonnet.jpg"),
-        data_model(uuidv4(),"bonnets", "rouge","laine",1000,300,false,"./assests/pictures/bonnets/bonnet.jpg"),
-        data_model(uuidv4(),"bonnets", "vert","laine",1550,300,true,"./assests/pictures/bonnets/bonnet.jpg")
+        data_model(uuidv4(),"bonnets","rose",false,"./assests/pictures/bonnets/bonnet.jpg"),
+        data_model(uuidv4(),"bonnets","bleu",true,"./assests/pictures/bonnets/bonnet.jpg"),
+        data_model(uuidv4(),"bonnets","rouge",false,"./assests/pictures/bonnets/bonnet.jpg"),
+        data_model(uuidv4(),"bonnets","vert",true,"./assests/pictures/bonnets/bonnet.jpg")
         
     ],
     peluches: 
     [
-        data_model(uuidv4(),"peluches", "rose","coton et laine",1220,300,true,"./assests/pictures/peluches/teddy.jpg"),
-        data_model(uuidv4(),"peluches", "bleu","coton et laine",700,300,true,"./assests/pictures/peluches/teddy.jpg"),
-        data_model(uuidv4(),"peluches", "rouge","coton et laine",800,300,true,"./assests/pictures/peluches/teddy.jpg"),
-        data_model(uuidv4(),"peluches", "vert","coton et laine",990,300,false,"./assests/pictures/peluches/teddy.jpg")
+        data_model(uuidv4(),"peluches","rose",true,"./assests/pictures/peluches/teddy.jpg"),
+        data_model(uuidv4(),"peluches","bleu",true,"./assests/pictures/peluches/teddy.jpg"),
+        data_model(uuidv4(),"peluches","rouge",true,"./assests/pictures/peluches/teddy.jpg"),
+        data_model(uuidv4(),"peluches","vert",false,"./assests/pictures/peluches/teddy.jpg")
     ],
     châles: 
     [
-        data_model(uuidv4(),"châles", "rose","coton et laine",1220,300,true,"./assests/pictures/chales/chale.jpg"),
-        data_model(uuidv4(),"châles", "bleu","coton et laine",700,300,true,"./assests/pictures/chales/chale.jpg"),
-        data_model(uuidv4(),"châles", "rouge","coton et laine",800,300,true,"./assests/pictures/chales/chale.jpg"),
-        data_model(uuidv4(),"châles", "vert","coton et laine",990,300,false,"./assests/pictures/chales/chale.jpg")
+        data_model(uuidv4(),"châles","rose",true,"./assests/pictures/chales/chale.jpg"),
+        data_model(uuidv4(),"châles","bleu",true,"./assests/pictures/chales/chale.jpg"),
+        data_model(uuidv4(),"châles","rouge",true,"./assests/pictures/chales/chale.jpg"),
+        data_model(uuidv4(),"châles","vert",false,"./assests/pictures/chales/chale.jpg")
     ],
     capes: 
     [
-        data_model(uuidv4(),"capes", "rose","coton et laine",1220,300,true,"./assests/pictures/capes/cape.jpeg"),
-        data_model(uuidv4(),"capes", "bleu","coton et laine",700,300,true,"./assests/pictures/capes/cape.jpeg"),
-        data_model(uuidv4(),"capes", "rouge","coton et laine",800,300,true,"./assests/pictures/capes/cape.jpeg"),
-        data_model(uuidv4(),"capes", "vert","coton et laine",990,300,false,"./assests/pictures/capes/cape.jpeg")
+        data_model(uuidv4(),"capes","rose",true,"./assests/pictures/capes/cape.jpeg"),
+        data_model(uuidv4(),"capes","bleu",true,"./assests/pictures/capes/cape.jpeg"),
+        data_model(uuidv4(),"capes","rouge",true,"./assests/pictures/capes/cape.jpeg"),
+        data_model(uuidv4(),"capes","vert",false,"./assests/pictures/capes/cape.jpeg")
     ],
     echarpes: 
     [
-        data_model(uuidv4(),"echarpes", "rose","coton et laine",1220,300,true,"./assests/pictures/echarpes/echarpe.jpg"),
-        data_model(uuidv4(),"echarpes", "bleu","coton et laine",700,300,true,"./assests/pictures/echarpes/echarpe.jpg"),
-        data_model(uuidv4(),"echarpes", "rouge","coton et laine",800,300,true,"./assests/pictures/echarpes/echarpe.jpg"),
-        data_model(uuidv4(),"echarpes", "vert","coton et laine",990,300,false,"./assests/pictures/echarpes/echarpe.jpg")
+        data_model(uuidv4(),"echarpes","rose",true,"./assests/pictures/echarpes/echarpe.jpg"),
+        data_model(uuidv4(),"echarpes","bleu",true,"./assests/pictures/echarpes/echarpe.jpg"),
+        data_model(uuidv4(),"echarpes","rouge",true,"./assests/pictures/echarpes/echarpe.jpg"),
+        data_model(uuidv4(),"echarpes","vert",false,"./assests/pictures/echarpes/echarpe.jpg")
     ]
 }
 
-export const send_all_product_types = ()=>{
+export const send_all_product_types_and_common_informations = ()=>{
     const array = []
-    for(const product in datas){
-        array.push(product)
+    for(const product_type in datas){
+        let data = return_common_informations(product_type)
+        // console.log("Variable MESK : ", mesk)
+        array.push({type : product_type, informations : data})
     }
-    console.log("LES TYPES : ", array)
+    // console.log("LES TYPES : ", array)
     return array
 }
 
@@ -79,7 +99,7 @@ export const send_all_items = ()=>{
             array.push(item)
         });
     }
-    console.log("LES PRODUITS : ", array)
+    // console.log("LES PRODUITS : ", array)
     return array
 }
 

@@ -1,17 +1,18 @@
 .card{
-    border:1px solid red;
-    width: 18%;
+    //border:1px solid red;
+    width: 50%;
     height:40%;
-    padding:10px;
     display: flex;
     justify-content: center;
+    margin-top:10px;
     &__container{
         display: flex;
         flex-direction: column;
-        border:1px solid green;
+        border:2px solid $ball;
+        border-radius:5px;
         width:80%;
         &__image{
-            border:1px solid purple; 
+            //border:1px solid purple; 
             display: flex;
             justify-content: center;
             object-fit: contain;
@@ -23,28 +24,25 @@
             display: flex;
             justify-content: end;
             &--green{
-                color:green;
-                background-color: green;
-                border:1px solid green;
+                color:rgb(80, 208, 80);
+                background-color: rgb(80, 208, 80);
+                border:1px solid rgb(80, 208, 80);
                 border-radius:50%;
-                width:10px;
-                height:10px;
+                width:15px;
+                height:15px;
+                margin-right:10px;
+                margin-bottom:10px;
             }
             &--red{
-                color:red;
-                background-color: red;
-                border:1px solid red;
+                color:rgb(228, 80, 80);
+                background-color: rgb(228, 80, 80);
+                border:1px solid rgb(228, 80, 80);
                 border-radius:50%;
-                width:10px;
-                height:10px;
+                width:15px;
+                height:15px;
+                margin-right:10px;
+                margin-bottom:10px;
             } 
-        }
-        &__price, &__matter{
-            padding: 10px 0px;
-            font-family: "allText";
-            font-size: 1.2em;
-            display: flex;
-            justify-content: center;
         }
     }
     
