@@ -13,20 +13,18 @@ const CommonInformations = ({all_product_types_and_informations, selected_type})
     }
 
     return (
-        <div>
+            <div className='infos'>
             {selected_type == "all" ? 
-                (<div>Baise ta soeur et tape dans le fond c'est pas ta mère</div>)
+                (<div className='infos__description'>Baise ta soeur et tape dans le fond c'est pas ta mère</div>)
                 :
                 (
-                    <div>
-                        <div>{return_price_and_description().informations.description}</div>
-                        <div>{return_price_and_description().informations.price/100}€</div>
-                    </div>
+                  <div>  
+                    <div className='infos__description'>{return_price_and_description().informations.description}</div>
+                    <div className='infos__price'>{return_price_and_description().informations.price/100}€</div>
+                  </div>  
                 )
-            
             }
-            
-        </div>
+            </div>
     )
 }
 export default CommonInformations

@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import { useNavigate, useLocation} from "react-router-dom";
 //DATAS
 import { send_all_product_types_and_common_informations, send_all_items } from '../../resources/datas';
 //COMPONENT
@@ -25,6 +24,7 @@ const Products = ()=>{
     }
 
     //STATE POUR CAPTURER LE TYPE DE PRODUIT SELECTIONNE PAR L'UTILISATEUR
+    //LORSQU'IL CLIQUE SUR LE MENU DE FILTRE
     const[selected_type, set_selected_type]=useState("all")
 
     //MISE A JOUR DU STATE
@@ -61,7 +61,7 @@ const Products = ()=>{
             onClick={(event)=>update_selected_type(event)}
             style={return_style("all")}
             >
-                Nos produits
+                Tout
             </span>
             {return_types_only().map(item=>(
                 <span 
@@ -79,6 +79,7 @@ const Products = ()=>{
         all_product_types_and_informations={all_product_types_and_informations}
         selected_type={selected_type}
         />
+
         <div className='products__container'>
             {selected_type !== "all" &&
                 datas.filter(item => item.type === selected_type).map(elem=>

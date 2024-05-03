@@ -5,18 +5,19 @@ const common_informations = [
     {type : "peluches", price : 900, description : "On les tricotte avec nos mimines alors achète espèce de salope, ça t'évitera d'aller chez king Jouet !"},
     {type : "châles", price : 2000, description : "On emploie des esclaves c'est plus facile, ça coûte rien. En tout cas ils sont faits mains !"},
     {type : "capes", price : 2500, description : "Admirez nos somptueuses capes en peaux humaines, entièrements fabriquées avec de la peau de cons. T'imagines que la matière première ne manque pas !"},
-    {type : "echarpes", price : 1000, description : "On y met nos tripes pour les tricotter et surtout de la laine !"}
+    {type : "echarpes", price : 1000, description : "On y met nos tripes pour les tricotter et surtout de la laine !"},
+    {type : "gilets", price : 3000, description : "C'est pas un gilet lidl enculé, avec ça t'auras chaud !"}
 ]
 
 const return_common_informations = (product_type)=>{
     let data = new Object
     common_informations.forEach(product=>{
         if(product.type == product_type){
-            console.log("Product found. OK. Code status 202.", product)
+            //console.log("Product found. OK. Code status 202.", product)
             data = product
         }
         else{
-            console.log("Error. Product not found. Codes status 404.")
+            // console.log("Error. Product not found. Codes status 404.")
             return false
         }
     })
@@ -78,6 +79,12 @@ export const datas = {
         data_model(uuidv4(),"echarpes","bleu",true,"./assests/pictures/echarpes/echarpe.jpg"),
         data_model(uuidv4(),"echarpes","rouge",true,"./assests/pictures/echarpes/echarpe.jpg"),
         data_model(uuidv4(),"echarpes","vert",false,"./assests/pictures/echarpes/echarpe.jpg")
+    ],
+    gilets:
+    [
+        data_model(uuidv4(),"gilets","blanc",true,"./assests/pictures/gilets/gilet.jpg"),
+        data_model(uuidv4(),"gilets","blanc crème",true,"./assests/pictures/gilets/gilet.jpg"),
+        data_model(uuidv4(),"gilets","blanc cassé",false,"./assests/pictures/gilets/gilet.jpg")
     ]
 }
 
