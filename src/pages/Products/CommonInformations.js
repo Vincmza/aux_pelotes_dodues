@@ -11,11 +11,12 @@ const CommonInformations = ({all_product_types_and_informations, selected_type})
         });
         return data[0]
     }
+    const all_description = "Toutes mes créations sont faites par mes soins à partir de matériaux nobles et naturels."
 
     return (
             <div className='infos'>
             {selected_type == "all" ? 
-                (<div className='infos__description'>Baise ta soeur et tape dans le fond c'est pas ta mère</div>)
+                (<div className='infos__description'>{all_description}</div>)
                 :
                 (
                   <div>  

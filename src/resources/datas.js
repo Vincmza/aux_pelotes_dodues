@@ -1,12 +1,12 @@
 import { v4 as uuidv4 } from 'uuid';
 
 const common_informations = [
-    {type : "bonnets", price : 1500, description : "Nos bonnets sont fabriqués avec de la laine de moutons qu'on élève nous mêmes bande de bâtards !"},
-    {type : "peluches", price : 900, description : "On les tricotte avec nos mimines alors achète espèce de salope, ça t'évitera d'aller chez king Jouet !"},
-    {type : "châles", price : 2000, description : "On emploie des esclaves c'est plus facile, ça coûte rien. En tout cas ils sont faits mains !"},
-    {type : "capes", price : 2500, description : "Admirez nos somptueuses capes en peaux humaines, entièrements fabriquées avec de la peau de cons. T'imagines que la matière première ne manque pas !"},
-    {type : "echarpes", price : 1000, description : "On y met nos tripes pour les tricotter et surtout de la laine !"},
-    {type : "gilets", price : 3000, description : "C'est pas un gilet lidl enculé, avec ça t'auras chaud !"}
+    {type : "bonnets", price : 1500, description : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "},
+    {type : "peluches", price : 900, description : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "},
+    {type : "châles", price : 2000, description : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "},
+    {type : "capes", price : 2500, description : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "},
+    {type : "echarpes", price : 1000, description : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "},
+    {type : "gilets", price : 3000, description : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "}
 ]
 
 const return_common_informations = (product_type)=>{
