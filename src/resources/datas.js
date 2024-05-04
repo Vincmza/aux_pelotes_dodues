@@ -26,19 +26,21 @@ const return_common_informations = (product_type)=>{
 
 const data_model = (
     id=String, 
-    type=String, 
+    type=String,
+    model= String,
     color=String, 
     isavailable=Boolean, 
     url=String)=>{
 
-    const model = {
+    const scheme = {
         id:id,
         type: type,
+        model: model,
         color: color,
         isAvailable: isavailable, 
         image : url
     }
-    return model
+    return scheme
 }
 
 export const datas = {
@@ -46,45 +48,46 @@ export const datas = {
     // ID, TYPE, COULEUR, MATIERES UTILISEES, TAILLE, PRIX, FRAIS DE PORT, DISPONIBLE, URL PHOTO
     bonnets: 
     [
-        data_model(uuidv4(),"bonnets","rose",false,"./assests/pictures/bonnets/bonnet.jpg"),
-        data_model(uuidv4(),"bonnets","bleu",true,"./assests/pictures/bonnets/bonnet.jpg"),
-        data_model(uuidv4(),"bonnets","rouge",false,"./assests/pictures/bonnets/bonnet.jpg"),
-        data_model(uuidv4(),"bonnets","vert",true,"./assests/pictures/bonnets/bonnet.jpg")
+        
+        data_model(uuidv4(),"bonnets","simple","rose",false,"./assests/pictures/bonnets/bonnet.jpg"),
+        data_model(uuidv4(),"bonnets","simple","bleu",true,"./assests/pictures/bonnets/bonnet.jpg"),
+        data_model(uuidv4(),"bonnets","double épaisseur","rouge",false,"./assests/pictures/bonnets/bonnet.jpg"),
+        data_model(uuidv4(),"bonnets","double épaisseur","vert",true,"./assests/pictures/bonnets/bonnet.jpg")
         
     ],
     peluches: 
     [
-        data_model(uuidv4(),"peluches","rose",true,"./assests/pictures/peluches/teddy.jpg"),
-        data_model(uuidv4(),"peluches","bleu",true,"./assests/pictures/peluches/teddy.jpg"),
-        data_model(uuidv4(),"peluches","rouge",true,"./assests/pictures/peluches/teddy.jpg"),
-        data_model(uuidv4(),"peluches","vert",false,"./assests/pictures/peluches/teddy.jpg")
+        data_model(uuidv4(),"peluches","belzebuth","rose",true,"./assests/pictures/peluches/teddy.jpg"),
+        data_model(uuidv4(),"peluches","belzebuth","bleu",true,"./assests/pictures/peluches/teddy.jpg"),
+        data_model(uuidv4(),"peluches","lucifer","rouge",true,"./assests/pictures/peluches/teddy.jpg"),
+        data_model(uuidv4(),"peluches","lucifer","vert",false,"./assests/pictures/peluches/teddy.jpg")
     ],
     châles: 
     [
-        data_model(uuidv4(),"châles","rose",true,"./assests/pictures/chales/chale.jpg"),
-        data_model(uuidv4(),"châles","bleu",true,"./assests/pictures/chales/chale.jpg"),
-        data_model(uuidv4(),"châles","rouge",true,"./assests/pictures/chales/chale.jpg"),
-        data_model(uuidv4(),"châles","vert",false,"./assests/pictures/chales/chale.jpg")
+        data_model(uuidv4(),"châles","aventurier","rose",true,"./assests/pictures/chales/chale.jpg"),
+        data_model(uuidv4(),"châles","aventurier","bleu",true,"./assests/pictures/chales/chale.jpg"),
+        data_model(uuidv4(),"châles","aventurier","rouge",true,"./assests/pictures/chales/chale.jpg"),
+        data_model(uuidv4(),"châles","exploration","vert",false,"./assests/pictures/chales/chale.jpg")
     ],
     capes: 
     [
-        data_model(uuidv4(),"capes","rose",true,"./assests/pictures/capes/cape.jpeg"),
-        data_model(uuidv4(),"capes","bleu",true,"./assests/pictures/capes/cape.jpeg"),
-        data_model(uuidv4(),"capes","rouge",true,"./assests/pictures/capes/cape.jpeg"),
-        data_model(uuidv4(),"capes","vert",false,"./assests/pictures/capes/cape.jpeg")
+        data_model(uuidv4(),"capes","chamane","rose",true,"./assests/pictures/capes/cape.jpeg"),
+        data_model(uuidv4(),"capes","chamane","bleu",true,"./assests/pictures/capes/cape.jpeg"),
+        data_model(uuidv4(),"capes","moyen-âge","rouge",true,"./assests/pictures/capes/cape.jpeg"),
+        data_model(uuidv4(),"capes","moyen-âge","vert",false,"./assests/pictures/capes/cape.jpeg")
     ],
     echarpes: 
     [
-        data_model(uuidv4(),"echarpes","rose",true,"./assests/pictures/echarpes/echarpe.jpg"),
-        data_model(uuidv4(),"echarpes","bleu",true,"./assests/pictures/echarpes/echarpe.jpg"),
-        data_model(uuidv4(),"echarpes","rouge",true,"./assests/pictures/echarpes/echarpe.jpg"),
-        data_model(uuidv4(),"echarpes","vert",false,"./assests/pictures/echarpes/echarpe.jpg")
+        data_model(uuidv4(),"echarpes","automne","rose",true,"./assests/pictures/echarpes/echarpe.jpg"),
+        data_model(uuidv4(),"echarpes","automne","bleu",true,"./assests/pictures/echarpes/echarpe.jpg"),
+        data_model(uuidv4(),"echarpes","printemps","rouge",true,"./assests/pictures/echarpes/echarpe.jpg"),
+        data_model(uuidv4(),"echarpes","printemps","vert",false,"./assests/pictures/echarpes/echarpe.jpg")
     ],
     gilets:
     [
-        data_model(uuidv4(),"gilets","blanc",true,"./assests/pictures/gilets/gilet.jpg"),
-        data_model(uuidv4(),"gilets","blanc crème",true,"./assests/pictures/gilets/gilet.jpg"),
-        data_model(uuidv4(),"gilets","blanc cassé",false,"./assests/pictures/gilets/gilet.jpg")
+        data_model(uuidv4(),"gilets","arctique","blanc",true,"./assests/pictures/gilets/gilet.jpg"),
+        data_model(uuidv4(),"gilets","arctique","blanc crème",true,"./assests/pictures/gilets/gilet.jpg"),
+        data_model(uuidv4(),"gilets","antartique","blanc cassé",false,"./assests/pictures/gilets/gilet.jpg")
     ]
 }
 

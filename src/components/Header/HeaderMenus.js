@@ -4,10 +4,10 @@ import { useNavigate, useLocation} from "react-router-dom";
 
 const HeaderMenus = ()=>{
     const all_menus = [
-        {menu:"Actualités", route:"news"}, 
-        {menu:"Créations", route:"products"}, 
-        {menu:"Contact", route:"contact_us"}, 
-        {menu:"Qui suis-je ?", route:"team"}
+        // {menu:"Actualités", route:"news"}, 
+        {menu:"Créations", route:"products"},
+        {menu:"Qui suis-je ?", route:"team"}, 
+        {menu:"Contact", route:"contact_us"} 
     ]
     const [is_icon_clicked, set_is_icon_clicked] = useState("")
     const location = useLocation()
