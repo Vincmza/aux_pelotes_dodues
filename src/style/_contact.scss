@@ -50,27 +50,27 @@
         font-weight: bold;
     }
 }
-label{
-    //border:1px solid blue;
-    font-family: "menu_and_contact";
-    font-size: 20px;
-    margin-top: 40px;
-}
+// label{
+//     //border:1px solid blue;
+//     font-family: "menu_and_contact";
+//     font-size: 20px;
+//     margin-top: 40px;
+// }
 //INPUT
-input{
-    //border:1px solid green;
-    width:70%;
-    font-size: 25px;
-    font-family: "menu_and_contact";
-    outline: none;
-    border:none;
-    border-bottom: 2px solid $border; 
-    padding: 10px; 
-    background-color: $bg_main_page;
-}
-input:focus{
-    border-color: $ball;
-}
+// input{
+//     //border:1px solid green;
+//     width:70%;
+//     font-size: 25px;
+//     font-family: "menu_and_contact";
+//     outline: none;
+//     border:none;
+//     border-bottom: 2px solid $border; 
+//     padding: 10px; 
+//     background-color: $bg_main_page;
+// }
+// input:focus{
+//     border-color: $ball;
+// }
 //TEXTAREA 
 textarea{
     resize: none;

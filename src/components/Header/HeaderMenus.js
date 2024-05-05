@@ -9,7 +9,7 @@ const HeaderMenus = ()=>{
         {menu:"Qui suis-je ?", route:"team"}, 
         {menu:"Contact", route:"contact_us"} 
     ]
-    const [is_icon_clicked, set_is_icon_clicked] = useState("")
+    const [is_icon_clicked, set_is_icon_clicked] = useState(all_menus[0].menu)
     const location = useLocation()
     const current_menu = location.pathname
     let navigate = useNavigate()
