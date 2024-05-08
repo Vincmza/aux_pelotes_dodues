@@ -4,11 +4,10 @@ import { v4 as uuidv4 } from 'uuid';
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { addDoc, collection, getDocs } from "firebase/firestore";
 
-function StoreTxtAndImage(){
+function StoreTxtAndImage(props){
 
     // SCHEMA DE DONNEES TEXTUELLES POUR UN PRODUIT
     let oneProductData = {
-        //id: new String(uuidv4()),
         type: new String(""), 
         model:new String(""),  
         color:new String(""), 
@@ -24,20 +23,8 @@ function StoreTxtAndImage(){
     // CHEMIN VERS L'IMAGE SUR LE SERVEUR FIREBASE
     const [img,setImg] = useState('')
 
-    // STATE DES DONNEES DEJA PRESENTES SUR LA BDD
-    const [data,setData] = useState([])
-    //console.log("LES DONNEES : ", data)
-
-    // ON RECUPERE LES DONNES 
-    // ON MET A JOUR LE STATE AVEC setData
-    const getData = async () =>{
-        const docRef = collection(txtDB,'bonnets')
-        const dataDb = await getDocs(docRef)
-        const allData = dataDb.docs.map(val=>({...val.data(), id: val.id}))
-        setData(allData)
-    }
-
     // POUR CHAQUE INPUT ON CAPTURE LA VALEUR
+    // L'ATTRIBUT NAME SERT DE CLE
     // ON MET A JOUR LE STATE AVEC setTxt
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -69,16 +56,12 @@ function StoreTxtAndImage(){
     //ENSUITE ON AJOUTE L'OBJET A LA BASE DE DONNEES TEXTUELLES
     const handleClick = async () =>{
         //CONNEXION A LA BDD
-        const docRef = collection(txtDB,'bonnets')
+        const docRef = collection(txtDB,'châles')
         // ON AJOUTE L'URL DE L'IMAGE QUI A ETE UPLOADEE
         await addDoc(docRef,{...txt, imageUrl:img})
 
         alert("Data added successfully")
     }
-
-    useEffect(()=>{
-        getData()
-    },[])
 
     const returnStyle = ()=>{
         const style = {
