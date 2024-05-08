@@ -12,26 +12,28 @@ import StoreTxtAndImage from "./backend/StoreTxtAndImage";
 import { BrowserRouter, Routes, Route} from "react-router-dom";
 
 //FIREBASE
-import db from "./backend/firebase"
+import {txtDB} from "./backend/firebase"
 import { collection, onSnapshot } from "firebase/firestore";
 
 //METHODS
 import { handleNew } from "./backend/databaseMethods";
 import { editNew } from "./backend/databaseMethods";
 
-
-
 function App(){
+  // const query = collection(txtDB, "products")
+  // const [docs, loading, error] = useCollectionData (query);
+  // console.log ("MES KOUILLES : ", docs)
+
   // STATE RASSEMBLANT LES ITEMS A AFFICHER
   const [bonnets, setBonnets]= useState([])
   //console.log("CHECK bonnets State : ", bonnets)
   // RECUPERATION DES PRODUITS AVEC USE EFFECT
   // MISE A JOUR DU STATE
-  useEffect(()=>{
-    onSnapshot(collection(db,"bonnets"), (snapshot)=>{
-      setBonnets(snapshot.docs.map((doc) => ({...doc.data(), id: doc.id})))
-    })
-  },[])
+  // useEffect(()=>{
+  //   onSnapshot(collection(db,"bonnets"), (snapshot)=>{
+  //     setBonnets(snapshot.docs.map((doc) => ({...doc.data(), id: doc.id})))
+  //   })
+  // },[])
 
   return (
     <div className="App">
