@@ -12,67 +12,55 @@ import { BrowserRouter, Routes, Route} from "react-router-dom";
 
 //FIREBASE
 import { txtDB } from "./backend/firebase"
-import { addDoc, collection, getDocs } from "firebase/firestore";
+import { addDoc, collection, doc, getDocs, query, where, onSnapshot, collectionGroup} from "firebase/firestore";
 
 //METHODS
 import { handleNew } from "./backend/databaseMethods";
 import { editNew } from "./backend/databaseMethods";
 
 function App(){
-
-  const allCollections = {
-    bonnets:"bonnets",
-    châles:"châles",
-    capes:"capes",
-    écharpes:"écharpes"
-  }
-  const collectionKeys = Object.keys(allCollections)
-
+  //CONNEXION A LA BDD
+  const docRef = collection(txtDB,"products")
   // STATE DES DONNEES DEJA PRESENTES SUR LA BDD
-  const [bonnets, set_bonnets]= useState([])
-  const [châles, set_châles]= useState([])
-  const [écharpes, set_écharpes]=useState([])
-  const [capes, set_capes]=useState([])
+  const [products, setProducts]=useState([])
+  // STATE DE TOUS LES PRODUITS
+  const [allProducts, setAllProducts]=useState([])
 
-  const organizeAllProducts = ()=>{
-    //1 - Implémenter plus de collections dans firebase
-    //2- concaténer les states dans un seul tableau
-    //3 - Automatiser cette 2eme tâche avec une boucle
-    const array = bonnets.concat(châles)
-    console.log(array)
-    return array
+  //RECUPERATION ET STOCKAGE DES COLLECTIONS DES CLES
+  //RECUPEREES PRECEDEMMENT
+  const getAllItems = async(product)=>{
+      const id = product.id
+      const productRef = collection(txtDB, `products/${id}/data`)
+      const productDataDB = await getDocs(productRef)
+      const allItems = productDataDB.docs.map(val=>({...val.data(), id: val.id}))
+      setAllProducts(previousState => [...previousState, allItems])
   }
-  // ON RECUPERE LES DONNES 
-  // ON MET A JOUR LES STATES
-  const getData = async (collectionName) =>{
+
+  //RECUPERATION ET STOCKAGE DES CLES DES DIFFERENTES COLLECTIONS
+  const getData = async () =>{
     try{
-      const docRef = collection(txtDB,collectionName)
       const dataDb = await getDocs(docRef)
       const allData = dataDb.docs.map(val=>({...val.data(), id: val.id}))
-      switch(collectionName){
-        case "bonnets":
-          set_bonnets(allData)
-          break
-        case "châles":
-          set_châles(allData)
-        default:
-          console.log("all is ok")
-      }
+      setProducts(allData)
+      setAllProducts([])
+      products.forEach(product=>{
+        getAllItems(product)
+      })
     }
     catch(error){
       console.log("ERROR ==> ", error)
     }
-    
   }
+  
   useEffect(()=>{
-    collectionKeys.forEach(collectionName=>{
-      getData(collectionName)
-    })
+    getData()
   },[])
-  console.log(organizeAllProducts())
+  
+  //console.log("DATA = ", products)
+  //console.log("ALL PRODUCTS ==> ", allProducts)
   return (
     <div className="App">
-      <StoreTxtAndImage data={organizeAllProducts()}/>
+      <StoreTxtAndImage/>
       <BrowserRouter>
         {/* <HeaderProject/>
         <HeaderMenus/>

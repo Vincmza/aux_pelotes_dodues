@@ -56,7 +56,7 @@ function StoreTxtAndImage(props){
     //ENSUITE ON AJOUTE L'OBJET A LA BASE DE DONNEES TEXTUELLES
     const handleClick = async () =>{
         //CONNEXION A LA BDD
-        const docRef = collection(txtDB,'châles')
+        const docRef = collection(txtDB,'products/bonnets/data')
         // ON AJOUTE L'URL DE L'IMAGE QUI A ETE UPLOADEE
         await addDoc(docRef,{...txt, imageUrl:img})
 
