@@ -7,72 +7,51 @@ import Contact from "./pages/Contact/Contact";
 import Team from "./pages/Team";
 import Footer from "./components/Footer";
 import StoreTxtAndImage from "./backend/StoreTxtAndImage";
+import Bonnets from "./components/Bonnets";
+import Capes from "./components/Capes";
 // ROUTER
 import { BrowserRouter, Routes, Route} from "react-router-dom";
 
 //FIREBASE
 import { txtDB } from "./backend/firebase"
-import { addDoc, collection, doc, getDocs, query, where, onSnapshot, collectionGroup} from "firebase/firestore";
+import { addDoc, collection, doc, getDocs} from "firebase/firestore";
 
 //METHODS
 import { handleNew } from "./backend/databaseMethods";
 import { editNew } from "./backend/databaseMethods";
 
+
 function App(){
+  const collectionName = "products"
   //CONNEXION A LA BDD
-  const docRef = collection(txtDB,"products")
-  // STATE DES DONNEES DEJA PRESENTES SUR LA BDD
-  const [products, setProducts]=useState([])
-  // STATE DE TOUS LES PRODUITS
-  const [allProducts, setAllProducts]=useState([])
-
-  //RECUPERATION ET STOCKAGE DES COLLECTIONS DES CLES
-  //RECUPEREES PRECEDEMMENT
-  const getAllItems = async(product)=>{
-      const id = product.id
-      const productRef = collection(txtDB, `products/${id}/data`)
-      const productDataDB = await getDocs(productRef)
-      const allItems = productDataDB.docs.map(val=>({...val.data(), id: val.id}))
-      setAllProducts(previousState => [...previousState, allItems])
-  }
-
+  const docRef = collection(txtDB, collectionName)
+  //STATE DES DONNEES DEJA PRESENTES SUR LA BDD
+  const [products, setProducts]=useState([{id : "data not available yet"}])
+  
   //RECUPERATION ET STOCKAGE DES CLES DES DIFFERENTES COLLECTIONS
   const getData = async () =>{
-    try{
-      const dataDb = await getDocs(docRef)
-      const allData = dataDb.docs.map(val=>({...val.data(), id: val.id}))
-      setProducts(allData)
-      setAllProducts([])
-      products.forEach(product=>{
-        getAllItems(product)
-      })
-    }
-    catch(error){
-      console.log("ERROR ==> ", error)
-    }
+    const dataDb = await getDocs(docRef)
+    const allData = dataDb.docs.map(val=>({...val.data(), id: val.id}))
+    setProducts([])
+    setProducts(allData)
   }
-  
   useEffect(()=>{
-    getData()
+      getData()
   },[])
   
-  //console.log("DATA = ", products)
-  //console.log("ALL PRODUCTS ==> ", allProducts)
+  
+  
   return (
     <div className="App">
-      <StoreTxtAndImage/>
       <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<StoreTxtAndImage/>}/> 
+          <Route path="/bonnets" element={<Bonnets products={products} collectionName={collectionName}/>}/>
+          <Route path="/capes" element={<Capes/>}/>
+        </Routes>
+
         {/* <HeaderProject/>
         <HeaderMenus/>
-        <div 
-        style={{display:"flex",justifyContent:"center", marginTop: "10px"}}>
-          <button 
-          style={{padding:"10px"}}
-          onClick={editNew}>
-            EDIT
-          </button>
-        </div>
-        <Test/>
         <Routes>
           <Route path="/" element={<Products/>}/>
           <Route path="/products" element={<Products/>}/>
@@ -82,6 +61,8 @@ function App(){
         <Footer/> */}
       </BrowserRouter>
     </div>
+    
+    
   )
 };
 export default App
