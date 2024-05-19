@@ -32,14 +32,11 @@ function App(){
   const getData = async () =>{
     const dataDb = await getDocs(docRef)
     const allData = dataDb.docs.map(val=>({...val.data(), id: val.id}))
-    setProducts([])
     setProducts(allData)
   }
   useEffect(()=>{
       getData()
   },[])
-  
-  
   
   return (
     <div className="App">
@@ -47,7 +44,7 @@ function App(){
         <Routes>
           <Route path="/" element={<StoreTxtAndImage/>}/> 
           <Route path="/bonnets" element={<Bonnets products={products} collectionName={collectionName}/>}/>
-          <Route path="/capes" element={<Capes/>}/>
+          <Route path="/capes" element={<Capes products={products} collectionName={collectionName}/>}/>
         </Routes>
 
         {/* <HeaderProject/>

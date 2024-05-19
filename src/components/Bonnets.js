@@ -3,35 +3,44 @@ import {React, useEffect, useState} from "react"
 import { txtDB } from "../backend/firebase"
 import { collection, getDocs } from "firebase/firestore";
 
+//METHODS
+import { getPathToDB, getData, retrieveSubCollection } from "../backend/databaseMethods"
+
 const Bonnets = ({products, collectionName})=>{
+    //TO DO
+    ///* GESTION DE L'AFFICHAGE POUR UNE ERREUR
+    ///* GESTION AFFICHAGE POUR UN CHARGEMENT
+    ///* REFACTORING
+    const productId = "bonnets"
     //STATE POUR STOCKER LES BONNETS
-    const [allBonnets, setAllBonnets]=useState([])
-    //STATE CHEMIN VERS LA BDD
-    const [pathToBDD, setPathToBDD]=useState("path not available yet")
-    //RECUPERATION CHEMIN VERS LA BDD
-    const getPathToDB = ()=>{
-        const filter = products.filter(item => item?.id === "bonnets")
-        if(filter != []){
-            const data = products[0]?.id
-            const path = `${collectionName+'/'+data+'/data'}`
-            setPathToBDD(path)
+    const [allBonnets, setAllBonnets]=useState([{id : "no data available"}])
+    //RECUPERATION DES DONNEES
+    const retrieveSubCollection = (products, collectionName, productId)=>{
+        const currentPath = getPathToDB(products, collectionName, productId)
+        if(currentPath != false){
+            getData(currentPath)
+            .then(res=>{
+                setAllBonnets(res)
+            })
+            .catch(err=>{
+                console.log(err)
+            })
         }
         else{
-            console.log("Error, data not available yet")
+            console.log("Bonnets ==> can't update the state 'pathToBDD'")
         }
     }
-    useEffect(()=>{
-        getPathToDB()
-    })
+    console.log("lol ==> ", allBonnets)
 
+    //RECUPERATION CHEMIN VERS LA BDD
+    useEffect(()=>{
+        retrieveSubCollection(products, collectionName, productId)
+        
+    },[products])
+    
     return (
         <div>
-            {products[0]?.id === "data not available yet" ? 
-            (<h1>{products[0]?.id}</h1>)
-            :
-            (<h1>Chargement disponible : {products[0]?.id}</h1>)}
-            <h2>Le chemin de ses morts : {pathToBDD}</h2>
-
+            
         </div>
     )
 }
