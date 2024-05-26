@@ -37,6 +37,7 @@ function App(){
   useEffect(()=>{
       getData()
   },[])
+  console.log("Produits dans App : ", products)
   
   return (
     <div className="App">

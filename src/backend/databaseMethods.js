@@ -19,20 +19,15 @@ import { addDoc, collection, getDocs} from "firebase/firestore";
 //     console.log("L'id du produit : ", id)
 // }
 //RECUPERATION DU CHEMIN VERS LA SOUS COLELCTION
-export const getPathToDB = (products, collectionName, productId)=>{
-  //console.log({products, collectionName, productId})
-  const filter = products.filter(item => item?.id === productId)
-  if(filter.length > 0){
-      const currentProduct = filter[0]?.id
-      const path = `${collectionName+'/'+currentProduct+'/data'}`
-      console.log("FILTER = ", filter)
-      console.log("PATH = ", path)
-      return path
+export const getPathToDB = (element, collectionName)=>{
+  if(element){
+    const path = `${collectionName+'/'+element?.id+'/data'}`
+    return path
   }
   else{
-      console.log("Error, data not available yet")
-      return false
-  }
+    console.log("Aucun objet en paramètre")
+    return false
+  }  
 }
 
 export const getData = async (pathToBDD) =>{
@@ -43,21 +38,5 @@ export const getData = async (pathToBDD) =>{
   //console.log({connection, dataDb, allData, pathToBDD})
   return allData
 }
-// export const retrieveSubCollection = (products, collectionName, productId)=>{
-//   console.log({products, collectionName, productId})
-//   const currentPath = getPathToDB(products, collectionName, productId)
-//   if(currentPath != false){
-//       getData(currentPath)
-//       .then(res=>{
-//           console.log("Réponse : ", res)
-//           return res
-//       })
-//       .catch(err=>{
-//           console.log(err)
-//       })
-//   }
-//   else{
-//       console.log("Bonnets ==> can't update the state 'pathToBDD'")
-//   }
-// }
+
     
